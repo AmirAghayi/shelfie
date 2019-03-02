@@ -1,0 +1,5 @@
+.Dashboard{
+    display: flex;
+    flex-flow: wrap;
+    margin-left: 40px;
+}

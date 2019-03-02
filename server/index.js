@@ -22,7 +22,7 @@ massive(process.env.DB_CONNECTION_STRING, { scripts: __dirname + '/db' }).then((
     app.set('db', dbInstance);
 })
 
-app.get('/', () => {})
+
 
 
 app.listen(PORT, () => {

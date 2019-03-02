@@ -1,0 +1,15 @@
+.Header{
+    background-color:rgb(221, 58, 58);
+    height:50px;
+    padding:5px;
+    text-align: left;
+    padding-left: 100px;
+    color: aliceblue;
+    display: flex;
+    align-items: center;
+}
+
+
+.Image{
+    padding:20px;
+}

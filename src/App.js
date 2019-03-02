@@ -6,15 +6,37 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-  render() {
+  constructor(){
+    super();
+
+    this.state = {
+      inventory:[]
+    }
+
+  }
+
+
+  
+
+  render(){
     return (
       <div className="App">
            <Header />
-           <Dashboard />
            <Form />
+           <Dashboard />
       </div>
     );
   }
 }
 
-export default App;
+
+    
+  
+
+
+
+  export default App;
+
+
+
+
