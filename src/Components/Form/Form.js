@@ -1,37 +1,106 @@
 import React, { Component } from 'react';
 import './Form.css';
-import { IncomingMessage } from 'http';
+import preview from './Image/preview.jpeg';
+import axios from 'axios';
 
 class Form extends Component{
+   constructor(){
+      super();
+
+      this.state = {
+         imageUrl: '',
+         productName: '',
+         price: ''
+      }
+
+    this.handleUrlChange = this.handleUrlChange.bind (this);
+    this.handleNameChange = this.handleNameChange.bind (this); 
+    this.handlePriceChange = this.handlePriceChange.bind (this);    
+    this.handleAdd = this.handleAdd.bind(this);   
+
+   }
 
 
+handleUrlChange(event){
+   this.setState({
+      imageUrl: event.target.value
+   });
+}
 
+
+handleNameChange(event){ 
+   this.setState({
+   productName: event.target.value
+});}
+
+
+handlePriceChange(event){ 
+   this.setState({
+   price: event.target.value
+});}
+
+handleAdd(event){ 
+   const {imageUrl, productName, price} = this.state;
+   axios.post('/api/products', {
+      imageUrl, 
+      productName, 
+      price
+   }).then(() =>{
+      console.log('Item was Added.')
+   }
+   ).catch(() => {
+      console.log('Item Failed to Add.')
+   })
+
+}
 
 
 render(){
     return(
         <div className="Form">
 
-            <img src="./Image/preview.jpeg" />
+            <img 
+            className="Preview"
+            src={preview}
+            alt="product-image" />
 
              <p className="FormInput1">
                 Image URL: 
-                <input></input>
+                <input 
+                type="text"
+                value={this.state.imageUrl}
+                onChange={this.handleUrlChange}
+                ></input>
              </p>
             
              <p className="FormInput2">
                 Product Name: 
-                <input></input>
+                <input
+                type="text"
+                value={this.state.productName}
+                onChange={this.handleNameChange}
+                ></input>
              </p>
 
              <p className="FormInput3">
                 Price: 
-                <input></input>
+                <input
+                type="number"
+                value={this.state.price}
+                onChange={this.handlePriceChange}
+                ></input>
              </p>
 
-             <button className="CancelButton">Cancel</button>
+             <button 
+             className="CancelButton"
+             type="cancel"
+             >Cancel</button>
 
-             <button className="AddButton">Add to Inventory</button>
+             <button 
+             className="AddButton"
+             type="submit"
+             onClick={this.handleAdd}
+             >Add to Inventory</button>
 
         </div>
     );

@@ -1,5 +1,5 @@
 .Header{
-    background-color:rgb(221, 58, 58);
+    background-color:rgb(180, 20, 20);
     height:50px;
     padding:5px;
     text-align: left;
@@ -12,4 +12,5 @@
 
 .Image{
     padding:20px;
+    height: 30px;
 }

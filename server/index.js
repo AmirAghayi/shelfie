@@ -3,11 +3,17 @@ const cors = require ('cors');
 const bodyParser = require('body-parser');
 const massive = require('massive');
 require('dotenv').config({ path: __dirname + '/.env' });
+const controller = require('./controller')
 
 console.log(__dirname);
 console.log(__dirname + '/.env');
 
 const app = express();
+
+
+
+
+
 app.use(bodyParser.json());
 
 let {
@@ -23,7 +29,7 @@ massive(process.env.DB_CONNECTION_STRING, { scripts: __dirname + '/db' }).then((
 })
 
 
-
+app.post('/api/products', controller.postProduct )
 
 app.listen(PORT, () => {
     console.log(`App is running on ${PORT}`)

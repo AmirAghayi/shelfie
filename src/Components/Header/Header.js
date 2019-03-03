@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Header.css';
+import logo from './Image/logo.png';
 
 
 
@@ -8,7 +9,8 @@ export default function header(){
         <div className="Header">
             <img 
             className="Image"
-            src="./Image/logo.PNG"/>
+            src={logo}
+            alt="logo"/>
             
             <p>SHELFIE</p>
             
