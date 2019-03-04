@@ -17,7 +17,7 @@ class Form extends Component{
     this.handleNameChange = this.handleNameChange.bind (this); 
     this.handlePriceChange = this.handlePriceChange.bind (this);    
     this.handleAdd = this.handleAdd.bind(this);   
-
+   this.handleCancel = this.handleCancel.bind(this);
    }
 
 
@@ -46,13 +46,26 @@ handleAdd(event){
       productName, 
       price
    }).then(() =>{
-      console.log('Item was Added.')
-   }
-   ).catch(() => {
+      this.setState({
+         imageUrl: '',
+         productName: '',
+         price: ''
+      });
+   }).catch(() => {
       console.log('Item Failed to Add.')
    })
-
 }
+
+
+handleCancel(event){
+   this.setState({
+      imageUrl: '',
+      productName: '',
+      price: ''
+   });
+}
+
+
 
 
 render(){
@@ -94,6 +107,7 @@ render(){
              <button 
              className="CancelButton"
              type="cancel"
+             onClick={this.handleCancel}
              >Cancel</button>
 
              <button 
