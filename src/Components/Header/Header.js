@@ -1,10 +1,20 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './Header.css';
 import logo from './Image/logo.png';
 
 
 
 export default function header(){
+
+
+
+
+   
+
+
+
+
     return (
         <div className="Header">
             <img 
@@ -13,6 +23,18 @@ export default function header(){
             alt="logo"/>
             
             <p>SHELFIE</p>
+            <div>
+                <button className="NavBar1" type="btn">Dashboard</button>
+
+                <Link to="/Form">
+                   <button 
+                   className="NavBar2" 
+                   type="btn"
+                   >Add Inventory</button>
+                </Link>
+                
+            </div>
+            
             
         </div>
 

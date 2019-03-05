@@ -14,3 +14,23 @@
     padding:20px;
     height: 30px;
 }
+
+.NavBar1{
+    background-color: rgba(248, 70, 0, 0.815);
+    padding: 5px;
+    display: flexbox;
+    flex-direction: row;
+    margin-left: 50px;
+    border-radius: 4px;
+    border: 0;
+}
+
+.NavBar2{
+    background-color: rgba(248, 70, 0, 0.815);
+    padding: 5px;
+    display: flexbox;
+    flex-direction: row;
+    margin-left: 10px;
+    border-radius: 4px;
+    border:0;
+}
