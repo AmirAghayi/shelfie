@@ -24,12 +24,12 @@ export default function header(){
             
             <p>SHELFIE</p>
             <div>
-                <button className="NavBar1" type="btn">Dashboard</button>
+                <button className="NavBar1" type="button">Dashboard</button>
 
                 <Link to="/Form">
                    <button 
                    className="NavBar2" 
-                   type="btn"
+                   type="button"
                    >Add Inventory</button>
                 </Link>
                 
