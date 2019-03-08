@@ -58,6 +58,7 @@ handleAdd(event){
 
 
 handleCancel(event){
+   event.preventDefault();
    this.setState({
       imageUrl: '',
       productName: '',
@@ -81,6 +82,7 @@ render(){
                 Image URL: 
                 <input 
                 type="text"
+                placeholder="ImageURL"
                 value={this.state.imageUrl}
                 onChange={this.handleUrlChange}
                 ></input>
@@ -90,6 +92,7 @@ render(){
                 Product Name: 
                 <input
                 type="text"
+                placeholder="Product Name"
                 value={this.state.productName}
                 onChange={this.handleNameChange}
                 ></input>
@@ -99,6 +102,7 @@ render(){
                 Price: 
                 <input
                 type="number"
+                placeholder="Price"
                 value={this.state.price}
                 onChange={this.handlePriceChange}
                 ></input>
