@@ -9,26 +9,23 @@ class Dashboard extends Component{
     constructor(){
         super();
 
+        this.state = {};
     }
-
-
-
-    removeProduct(id){
+    
+    removeProduct = (id) => {
         const {getProducts} = this.props;
 
-        axios.delete(`/api/product/ ${id}`)
+        axios.delete(`/api/products/${id}`)
         .then(response => {
             getProducts();
         })
     }
 
-
-
-
 render(){
+
     const mappedInvList = this.props.inventory.map((product, index) => {
         return <Product key={ product.id } product={ product } removeProduct={this.removeProduct}/>
-    });
+    })
 
     return(
         <div className="Dashboard">
@@ -36,11 +33,6 @@ render(){
         </div>
     );
 }
-
-
-
 }
-
-
 
 export default Dashboard;

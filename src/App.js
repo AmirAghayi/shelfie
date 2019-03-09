@@ -29,7 +29,6 @@ componentDidMount(){
 getProducts = () => {
   axios.get('/api/inventory')
   .then( response => {
-    console.log('inventory', response)
      this.setState({
        inventory: response.data
       });

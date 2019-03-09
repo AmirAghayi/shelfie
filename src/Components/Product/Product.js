@@ -4,9 +4,6 @@ import React, { Component } from 'react';
 
 export default function product(props){
     const {removeProduct, product} = props;
-
-
-
     return (
         <div className="Product-Card">
             <img src={product.img}/>

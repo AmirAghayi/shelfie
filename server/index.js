@@ -24,7 +24,8 @@ let {
 massive(DB_CONNECTION_STRING, { scripts: __dirname + '/db' })
 .then((dbInstance) => {
     app.set('db', dbInstance);
-    console.log 
+}).catch(err => {
+    console.log(err)
 })
 
 
@@ -32,7 +33,7 @@ massive(DB_CONNECTION_STRING, { scripts: __dirname + '/db' })
 
 app.get('/api/inventory', controller.getAll);
 app.post('/api/products', controller.newProduct);
-app.delete('api/product/:id', controller.removeProduct);
+app.delete('/api/products/:id', controller.removeProduct);
 
 
 app.listen(PORT, () => {
