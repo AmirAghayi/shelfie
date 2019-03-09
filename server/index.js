@@ -28,14 +28,12 @@ massive(process.env.DB_CONNECTION_STRING, { scripts: __dirname + '/db' })
 })
 
 
-// app.post('/api/products', controller.postProduct )
-
 
 
 app.get('/api/inventory', controller.getAll);
 
 
-app.post('/api/product', controller.newProduct);
+app.post('/api/products', controller.newProduct);
 
 
 app.listen(PORT, () => {

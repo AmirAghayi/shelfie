@@ -41,7 +41,9 @@ getProducts = () => {
     return (
       <div className="App">
            <Header />
-           <Form />
+           <Form 
+           newInventory = {this.getProducts}
+           />
            <Dashboard 
            inventory = {this.state.inventory}
            />

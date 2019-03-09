@@ -31,7 +31,8 @@ handleUrlChange(event){
 handleNameChange(event){ 
    this.setState({
    productName: event.target.value
-});}
+});
+}
 
 
 handlePriceChange(event){ 
