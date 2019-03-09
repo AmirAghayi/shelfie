@@ -21,7 +21,7 @@ let {
 
 
 
-massive(process.env.DB_CONNECTION_STRING, { scripts: __dirname + '/db' })
+massive(DB_CONNECTION_STRING, { scripts: __dirname + '/db' })
 .then((dbInstance) => {
     app.set('db', dbInstance);
     console.log 
@@ -31,9 +31,8 @@ massive(process.env.DB_CONNECTION_STRING, { scripts: __dirname + '/db' })
 
 
 app.get('/api/inventory', controller.getAll);
-
-
 app.post('/api/products', controller.newProduct);
+app.delete('api/product/:id', controller.removeProduct);
 
 
 app.listen(PORT, () => {

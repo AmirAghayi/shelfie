@@ -8,27 +8,46 @@ class Form extends Component{
       super();
 
       this.state = {
-         imageUrl: '',
+         imgUrl: '',
          productName: '',
          price: ''
       }
 
-    this.handleUrlChange = this.handleUrlChange.bind (this);
-    this.handleNameChange = this.handleNameChange.bind (this); 
-    this.handlePriceChange = this.handlePriceChange.bind (this);    
-    this.handleAdd = this.handleAdd.bind(this);   
-   this.handleCancel = this.handleCancel.bind(this);
+      this.handleUrlChange = this.handleUrlChange.bind (this);
+      this.handleNameChange = this.handleNameChange.bind (this); 
+      this.handlePriceChange = this.handlePriceChange.bind (this);    
+      this.createProduct = this.createProduct.bind(this);   
+      this.handleCancel = this.handleCancel.bind(this);
+
    }
 
 
-handleUrlChange(event){
+
+   componentDidUpdate(props){
+      if(props != this.props){
+          
+      }
+   }
+
+
+resetState = () => {
    this.setState({
-      imageUrl: event.target.value
+         imgUrl: '',
+         productName: '',
+         price: ''
+      
+   })
+}
+
+
+handleUrlChange (event) {
+   this.setState({
+      imgUrl: event.target.value
    });
 }
 
 
-handleNameChange(event){ 
+handleNameChange(event) { 
    this.setState({
    productName: event.target.value
 });
@@ -40,28 +59,29 @@ handlePriceChange(event){
    price: event.target.value
 });}
 
-handleAdd(event){ 
-   const {imageUrl, productName, price} = this.state;
-   axios.post('/api/products', {
-      imageUrl, 
-      productName, 
-      price
-   }).then(() =>{
-      this.setState({
-         imageUrl: '',
-         productName: '',
-         price: ''
-      });
-   }).catch(() => {
-      console.log('Item Failed to Add.')
-   })
+createProduct(){
+   const {imgUrl, productName, price} = this.state;
+   const {getProducts} = this.props;
+console.log('the values', this.state)
+   const product = {
+       imgUrl,
+       productName,
+       price
+   }
+
+   axios.post('/api/products', product).then(response => {
+       getProducts();
+   });
+
+   this.resetState();
+
 }
 
 
 handleCancel(event){
    event.preventDefault();
    this.setState({
-      imageUrl: '',
+      imgUrl: '',
       productName: '',
       price: ''
    });
@@ -76,7 +96,7 @@ render(){
 
             <img 
             className="Preview"
-            src={preview}
+            src={this.state.imgUrl ? this.state.imgUrl :  preview}
             alt="product-image" />
 
              <p className="FormInput1">
@@ -84,7 +104,6 @@ render(){
                 <input 
                 type="text"
                 placeholder="ImageURL"
-                value={this.state.imageUrl}
                 onChange={this.handleUrlChange}
                 ></input>
              </p>
@@ -94,7 +113,6 @@ render(){
                 <input
                 type="text"
                 placeholder="Product Name"
-                value={this.state.productName}
                 onChange={this.handleNameChange}
                 ></input>
              </p>
@@ -104,7 +122,6 @@ render(){
                 <input
                 type="number"
                 placeholder="Price"
-                value={this.state.price}
                 onChange={this.handlePriceChange}
                 ></input>
              </p>
@@ -118,7 +135,7 @@ render(){
              <button 
              className="AddButton"
              type="submit"
-             onClick={this.handleAdd}
+             onClick={this.createProduct}
              >Add to Inventory</button>
 
         </div>

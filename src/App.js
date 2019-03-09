@@ -14,7 +14,8 @@ class App extends Component {
     super();
 
     this.state = {
-      inventory:[]
+      inventory:[],
+      currentlySelected: {}
     };
 
   }
@@ -28,6 +29,7 @@ componentDidMount(){
 getProducts = () => {
   axios.get('/api/inventory')
   .then( response => {
+    console.log('inventory', response)
      this.setState({
        inventory: response.data
       });
@@ -43,9 +45,13 @@ getProducts = () => {
            <Header />
            <Form 
            newInventory = {this.getProducts}
+           currentlySelected = {this.state.currentlySelected}
+           getProducts = {this.getProducts}
+
            />
            <Dashboard 
            inventory = {this.state.inventory}
+           getProducts = {this.getProducts}
            />
       </div>
     );
