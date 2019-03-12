@@ -35,7 +35,6 @@ resetState = () => {
          imgUrl: '',
          productName: '',
          price: ''
-      
    })
 }
 
@@ -72,9 +71,7 @@ console.log('the values', this.state)
    axios.post('/api/products', product).then(response => {
        getProducts();
    });
-
    this.resetState();
-
 }
 
 
