@@ -23,11 +23,11 @@ class Form extends Component{
 
 
 
-   componentDidUpdate(props){
-      if(props !== this.props){
-          
-      }
-   }
+
+
+
+
+   
 
 
 resetState = () => {
@@ -58,10 +58,11 @@ handlePriceChange(event){
    price: event.target.value
 });}
 
+
+
 createProduct(){
    const {imgUrl, productName, price} = this.state;
    const {getProducts} = this.props;
-console.log('the values', this.state)
    const product = {
        imgUrl,
        productName,

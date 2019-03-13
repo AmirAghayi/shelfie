@@ -41,6 +41,13 @@
     margin-top: 70px;
 }
 
+
+.delete_button:hover{
+    cursor: pointer;
+}
+
+
+
 .Edit_button{
     display: flexbox;
     flex-direction: column;
@@ -51,6 +58,13 @@
     border: 0ch;
     margin-left: 100px;
 }
+
+
+.Edit_button:hover{
+    cursor: pointer;
+}
+
+
 
 .Product-Card{
     margin-bottom: 20px;
