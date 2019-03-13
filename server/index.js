@@ -36,6 +36,9 @@ app.post('/api/products', controller.newProduct);
 app.delete('/api/products/:id', controller.removeProduct);
 
 
+
+
+
 app.listen(PORT, () => {
     console.log(`App is running on ${PORT}`)
 })

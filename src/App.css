@@ -31,3 +31,12 @@
     transform: rotate(360deg);
   }
 }
+
+.Dash-Form{
+  display: flex;
+  flex-direction: row;
+}
+
+.Products{
+  float: left;
+}

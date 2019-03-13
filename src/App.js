@@ -36,22 +36,27 @@ getProducts = () => {
   }
   
 
-  
+ 
 
   render(){
     return (
       <div className="App">
            <Header />
-           <Form 
-           newInventory = {this.getProducts}
-           currentlySelected = {this.state.currentlySelected}
-           getProducts = {this.getProducts}
 
-           />
-           <Dashboard 
-           inventory = {this.state.inventory}
-           getProducts = {this.getProducts}
-           />
+           <div className="Dash-Form">
+              <Form 
+              newInventory = {this.getProducts}
+              currentlySelected = {this.state.currentlySelected}
+              getProducts = {this.getProducts}
+
+              />
+              <Dashboard 
+              className="Products"
+              inventory = {this.state.inventory}
+              getProducts = {this.getProducts}
+              />
+           </div>
+           
       </div>
     );
   }

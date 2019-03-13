@@ -1,0 +1,64 @@
+.product_info{
+    display: flexbox;
+    flex-direction: column;
+}
+
+
+
+.image{
+    height: 200px;
+    width: 200px;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    float: left;
+}
+
+.product_name{
+    margin: 10px;
+    display: inline;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+.price{
+    display: flexbox;
+    flex-direction: column;
+    font-family: 'Times New Roman', Times, serif;
+    
+}
+
+
+.delete_button{
+    display: flexbox;
+    flex-direction: column;
+    background-color: rgb(111, 255, 111);
+    font-size: 20px;
+    border-radius: 3px;
+    padding:5px;
+    border: 0ch;
+    margin-bottom: 0px;
+    margin-top: 70px;
+}
+
+.Edit_button{
+    display: flexbox;
+    flex-direction: column;
+    background-color: rgb(111, 255, 111);
+    font-size: 20px;
+    border-radius: 3px;
+    padding:5px;
+    border: 0ch;
+    margin-left: 100px;
+}
+
+.Product-Card{
+    margin-bottom: 20px;
+    background-color:red;
+    margin-top: 50px;
+    width: 500px;
+    height: 240px;  
+    border-radius: 5px;
+    border-style: outset;
+    border-color: red;
+}

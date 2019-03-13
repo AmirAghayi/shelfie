@@ -21,6 +21,7 @@ class Dashboard extends Component{
         })
     }
 
+
 render(){
 
     const mappedInvList = this.props.inventory.map((product, index) => {
@@ -28,7 +29,7 @@ render(){
     })
 
     return(
-        <div className="Dashboard">
+        <div className="Dashboard_cards">
              {mappedInvList}
         </div>
     );

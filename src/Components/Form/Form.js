@@ -24,7 +24,7 @@ class Form extends Component{
 
 
    componentDidUpdate(props){
-      if(props != this.props){
+      if(props !== this.props){
           
       }
    }
@@ -101,6 +101,7 @@ render(){
                 <input 
                 type="text"
                 placeholder="ImageURL"
+                value={this.state.imgUrl}
                 onChange={this.handleUrlChange}
                 ></input>
              </p>
@@ -110,6 +111,7 @@ render(){
                 <input
                 type="text"
                 placeholder="Product Name"
+                value={this.state.productName}
                 onChange={this.handleNameChange}
                 ></input>
              </p>
@@ -119,6 +121,7 @@ render(){
                 <input
                 type="number"
                 placeholder="Price"
+                value={this.state.price}
                 onChange={this.handlePriceChange}
                 ></input>
              </p>

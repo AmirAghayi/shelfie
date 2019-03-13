@@ -1,6 +1,11 @@
-.Dashboard{
+.Dashboard_cards{
     display: flex;
-    flex-flow: wrap;
-    margin-left: 40px;
-    flex-wrap: wrap;
+    flex-flow: column;
+    box-sizing: border-box;
+    margin: auto;
+    width: 600px;
+    position: absolute;
+    margin-left: 100px;
+    margin-bottom: 50px;
+   
 }
