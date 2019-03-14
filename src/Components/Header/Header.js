@@ -9,12 +9,6 @@ export default function header(){
 
 
 
-
-   
-
-
-
-
     return (
         <div className="Header">
             <img 
@@ -24,9 +18,12 @@ export default function header(){
             
             <p>SHELFIE</p>
             <div>
-                <button className="NavBar1" type="button">Dashboard</button>
+                <Link to="/">
+                     <button className="NavBar1" type="button">Dashboard</button>
+                </Link>
+                
 
-                <Link to="/Form">
+                <Link to="/Addinventory">
                    <button 
                    className="NavBar2" 
                    type="button"

@@ -1,152 +1,160 @@
-import React, { Component } from 'react';
-import './Form.css';
-import preview from './Image/preview.jpeg';
-import axios from 'axios';
+import React, { Component } from "react";
+import "./Form.css";
+import preview from "./Image/preview.jpeg";
+import axios from "axios";
 
-class Form extends Component{
-   constructor(){
-      super();
+class Form extends Component {
+  constructor() {
+    super();
 
-      this.state = {
-         imgUrl: '',
-         productName: '',
-         price: ''
-      }
+    this.state = {
+      imgUrl: "",
+      productName: "",
+      price: "",
+      edit: false
+    };
+  }
 
-      this.handleUrlChange = this.handleUrlChange.bind (this);
-      this.handleNameChange = this.handleNameChange.bind (this); 
-      this.handlePriceChange = this.handlePriceChange.bind (this);    
-      this.createProduct = this.createProduct.bind(this);   
-      this.handleCancel = this.handleCancel.bind(this);
+  componentDidMount() {
+    if (this.props.match.params.id) {
+      const { id } = this.props.match.params;
+      this.getProduct(id);
+    }
+  }
 
-   }
+  resetState = () => {
+    this.setState({
+      imgUrl: "",
+      productName: "",
+      price: ""
+    });
+  };
 
-
-
-
-
-
-
-   
-
-
-resetState = () => {
-   this.setState({
-         imgUrl: '',
-         productName: '',
-         price: ''
-   })
-}
-
-
-handleUrlChange (event) {
-   this.setState({
+  handleUrlChange = event => {
+    this.setState({
       imgUrl: event.target.value
-   });
+    });
+  };
+
+  handleNameChange = event => {
+    this.setState({
+      productName: event.target.value
+    });
+  };
+
+  handlePriceChange = event => {
+    this.setState({
+      price: event.target.value
+    });
+  };
+
+  createProduct = () => {
+    const { imgUrl, productName, price } = this.state;
+    const { getProducts } = this.props;
+    const product = {
+      imgUrl,
+      productName,
+      price
+    };
+    this.resetState();
+  };
+
+  handleCancel = event => {
+    event.preventDefault();
+    this.setState({
+      imgUrl: "",
+      productName: "",
+      price: ""
+    });
+  };
+
+  getProduct = id => {
+    axios.get(`/api/product/${id}`).then(response => {
+       console.log(response)
+      this.setState({
+        imgUrl: response.data.img,
+        productName: response.data.name,
+        price: response.data.price,
+      });
+    });
+  };
+
+updateProduct = () => {
+   const {id} = this.props.match.params;
+    axios.put(`/api/update/${id}`, this.state)
+    .then(response => {
+       this.props.history.push('/');
+    });
 }
 
 
-handleNameChange(event) { 
-   this.setState({
-   productName: event.target.value
-});
-}
-
-
-handlePriceChange(event){ 
-   this.setState({
-   price: event.target.value
-});}
-
-
-
-createProduct(){
-   const {imgUrl, productName, price} = this.state;
-   const {getProducts} = this.props;
-   const product = {
-       imgUrl,
-       productName,
-       price
-   }
-
-   axios.post('/api/products', product).then(response => {
-       getProducts();
-   });
-   this.resetState();
-}
-
-
-handleCancel(event){
-   event.preventDefault();
-   this.setState({
-      imgUrl: '',
-      productName: '',
-      price: ''
-   });
-}
 
 
 
 
-render(){
-    return(
-        <div className="Form">
+  render() {
+    return (
+      <div className="Form">
+        <img
+          className="Preview"
+          src={this.state.imgUrl ? this.state.imgUrl : preview}
+          alt="product-image"
+        />
 
-            <img 
-            className="Preview"
-            src={this.state.imgUrl ? this.state.imgUrl :  preview}
-            alt="product-image" />
+        <p className="FormInput1">
+          Image URL:
+          <input
+            type="text"
+            placeholder="ImageURL"
+            value={this.state.imgUrl}
+            onChange={this.handleUrlChange}
+          />
+        </p>
 
-             <p className="FormInput1">
-                Image URL: 
-                <input 
-                type="text"
-                placeholder="ImageURL"
-                value={this.state.imgUrl}
-                onChange={this.handleUrlChange}
-                ></input>
-             </p>
-            
-             <p className="FormInput2">
-                Product Name: 
-                <input
-                type="text"
-                placeholder="Product Name"
-                value={this.state.productName}
-                onChange={this.handleNameChange}
-                ></input>
-             </p>
+        <p className="FormInput2">
+          Product Name:
+          <input
+            type="text"
+            placeholder="Product Name"
+            value={this.state.productName}
+            onChange={this.handleNameChange}
+          />
+        </p>
 
-             <p className="FormInput3">
-                Price: 
-                <input
-                type="number"
-                placeholder="Price"
-                value={this.state.price}
-                onChange={this.handlePriceChange}
-                ></input>
-             </p>
+        <p className="FormInput3">
+          Price:
+          <input
+            type="number"
+            placeholder="Price"
+            value={this.state.price}
+            onChange={this.handlePriceChange}
+          />
+        </p>
 
-             <button 
-             className="CancelButton"
-             type="cancel"
-             onClick={this.handleCancel}
-             >Cancel</button>
+        <button
+          className="CancelButton"
+          type="cancel"
+          onClick={this.handleCancel}
+        >
+          Cancel
+        </button>
 
-             <button 
+          {
+             this.props.match.params.id 
+             ?
+             <button
              className="AddButton"
              type="submit"
-             onClick={this.createProduct}
-             >Add to Inventory</button>
-
-        </div>
+             onClick={this.updateProduct}> Save Changes </button>
+            : 
+            <button
+             className="AddButton"
+             type="submit"
+             onClick={this.createProduct}> Add To Inventory </button>
+          }
+      </div>
     );
+  }
 }
-
-
-
-}
-
-
 
 export default Form;

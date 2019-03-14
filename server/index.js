@@ -34,8 +34,8 @@ massive(DB_CONNECTION_STRING, { scripts: __dirname + '/db' })
 app.get('/api/inventory', controller.getAll);
 app.post('/api/products', controller.newProduct);
 app.delete('/api/products/:id', controller.removeProduct);
-
-
+app.get('/api/product/:id', controller.getProduct);
+app.put('/api/update/:id', controller.editProduct);
 
 
 

@@ -3,7 +3,7 @@ module.exports = {
         const db = req.app.get('db');
         db.get_inventory()
         .then( response => {
-            console.log('inventory', response)
+            console.log('inventory')
            res.status(200).send(response);
         }).catch(err => {
             console.log('getAll:', err);
@@ -33,7 +33,35 @@ module.exports = {
         }).catch(err => {
             console.log('removeProduct:', err)
         });
-    }
+    },
+
+    getProduct: (req, res) => {
+        const db = req.app.get('db');
+        const {id} = req.params;
+
+        console.log(id)
+
+        db.get_product([id])
+        .then(response => {
+            res.send(response[0])
+        }).catch(err => console.log(err))
+
+    },
+
+    editProduct: (req, res ) => {
+        const db = req.app.get('db');
+        const {id} = req.params
+        console.log(req.params)
+        const {productName, price, imgUrl} = req.body
+        console.log(req.body)
+        
+        db.update_product([productName, price, imgUrl, id])
+        .then(response => {
+            res.send('edited')
+        }).catch(err => {
+            console.log(err)
+        })
+    } 
 
 
 }
