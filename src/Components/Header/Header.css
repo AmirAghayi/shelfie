@@ -25,6 +25,10 @@
     border: 0;
 }
 
+.NavBar1:hover{
+    cursor: pointer;
+}
+
 .NavBar2{
     background-color: rgba(248, 70, 0, 0.815);
     padding: 5px;
@@ -33,4 +37,8 @@
     margin-left: 10px;
     border-radius: 4px;
     border:0;
+}
+
+.NavBar2:hover{
+    cursor: pointer;
 }

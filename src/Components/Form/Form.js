@@ -50,14 +50,22 @@ class Form extends Component {
 
   createProduct = () => {
     const { imgUrl, productName, price } = this.state;
-    const { getProducts } = this.props;
+    const { getProducts } = this.state;
     const product = {
       imgUrl,
       productName,
       price
-    };
+    }
+
+    axios.post('api/products', product)
+    .then(response => {
+         this.props.history.push('/');
+    });
+    
     this.resetState();
   };
+
+
 
   handleCancel = event => {
     event.preventDefault();
